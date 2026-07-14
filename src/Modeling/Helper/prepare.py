@@ -1,46 +1,61 @@
-
 import os
 import sys
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-import numpy as np
+
+ROOT_DIR = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), "..", "..")
+)
+
+sys.path.append(ROOT_DIR)
+
+
 import pandas as pd
 
-from data.load_data import load_df, load_x_t, split_train_val
-from Config.load import load_config
-from Enum.features_enums import FeatureEnum as fenum    
-from Enum.paths_enums import PathEnum as penum
-from Preprocessing.preprocessing import Preprocessing_Pipeline
+from Preprocessing.preprocessing import PreprocessingPipeline
 
 
-config = load_config()
-train_val_path = penum.TRAIN_VAL_PATH.value
-apply_log_train = config['preprocessing']['training']['apply_log']
+class Preparing:
 
+    def __init__(self):
 
+        self.pipeline = PreprocessingPipeline()
 
-class Preparing():
-    def __init__(self, path=train_val_path):
-        self.df = load_df(path)
-        self.train, self.val = split_train_val(self.df)
-        self.preprocess_pipeline = Preprocessing_Pipeline()
+        self.train_df = pd.read_csv(
+            r"src\data\splits\split\train.csv"
+        )
+
+        self.val_df = pd.read_csv(
+            r"src\data\splits\split\val.csv"
+        )
 
     def prepare_data(self):
-        self.train, encode_season, encode_store = self.preprocess_pipeline.fit_transform(self.train)
-        self.val = self.preprocess_pipeline.transform(self.val, encode_season, encode_store)
-        
-        t_train = self.train[fenum.TRIP_DURATION.value]
-        t_val = self.val[fenum.TRIP_DURATION.value]
 
-        if apply_log_train:
-            t_train = np.log1p(t_train)
-            t_val = np.log1p(t_val)
+        X_train, y_train = self.pipeline.fit_transform(
+            self.train_df
+        )
 
-        x_train = self.train.drop(columns=[fenum.TRIP_DURATION.value])
-        x_val = self.val.drop(columns=[fenum.TRIP_DURATION.value])
+        X_val, y_val = self.pipeline.transform(
+            self.val_df
+        )
 
-        poly, x_train, x_val = self.preprocess_pipeline.polynomial_feature(x_train, x_val)
-        scaler, x_train, x_val = self.preprocess_pipeline.scaling(x_train,x_val)
+        return (
+            X_train,
+            X_val,
+            y_train,
+            y_val,
+            self.pipeline.scaler
+        )
 
 
-        return x_train, x_val, encode_season, encode_store, t_train, t_val, poly, scaler
+if __name__ == "__main__":
 
+    prepare = Preparing()
+
+    X_train, X_val, y_train, y_val, scaler = (
+        prepare.prepare_data()
+    )
+
+    print(X_train.shape)
+    print(y_train.shape)
+
+    print(X_val.shape)
+    print(y_val.shape)

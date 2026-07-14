@@ -2,32 +2,37 @@ import os
 import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-import numpy as np
-import pandas as pd
-from Modeling.Train.xgboost import Train
-from Helper.save import save_model
-from Helper.prepare import Preparing
-from Enum.model_enums import ModelEnum as menum
+from Modeling.Train.logistic_regression import Train
+from Modeling.Helper.prepare import Preparing
+from Modeling.Helper.save import save_model
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
+
     prepare = Preparing()
-    x_train, x_val, encode_season, encode_store, t_train, t_val, poly, scaler = prepare.prepare_data()
-    print(x_train.shape, t_train.shape, x_val.shape, t_val.shape)    
 
-    train = Train(x_train, x_val, t_train, t_val)
-    model = train.try_xgboost()
-    # eval_model(model, x_train, t_train, 'train')
-    # eval_model(model, x_val, t_val, 'val')
+    x_train, x_val, t_train, t_val, scaler = (
+        prepare.prepare_data()
+    )
 
-    save_model(model, encode_season, encode_store, poly, scaler, menum.XGBOOST.value, 'test')
+    print(x_train.shape)
+    print(t_train.shape)
+    print(x_val.shape)
+    print(t_val.shape)
 
+    train = Train(
+        x_train,
+        x_val,
+        t_train,
+        t_val
+    )
+
+    model = train.try_logistic_regression()
+
+    save_model(
+        model,
+        scaler,
+        "logistic_regression"
+    )
 
     print("Successful")
-
-
-
-
-
-
-
