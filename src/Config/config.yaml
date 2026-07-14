@@ -64,3 +64,12 @@ model:
       learning_rate: 0.1
       random_state: 42
       verbose: False
+
+  
+  catboost:
+    params:
+      depth: 6
+      learning_rate: 0.1
+      iterations: 300
+      random_seed: 42
+  
