@@ -1,8 +1,9 @@
 
 # Credit Card Fraud Detection
 
+
 <p align="center">
-  <img src="D:\zageng\CreditCardFraudDetection\src\utils\digrams\readme_digrame.png" width="1000">
+  <img src="src\utils\digrams\readme_digrame.png" width="1000">
 </p>
 
 ## Project Overview
