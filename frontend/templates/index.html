@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Credit Card Fraud Detection</title>
+    <link rel="stylesheet" href="static/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Credit Card Fraud Detection</h1>
+      <form id="prediction-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="Time">Time</label>
+            <input
+              type="number"
+              step="any"
+              id="Time"
+              name="Time"
+              required
+              placeholder="e.g. 0"
+            />
+          </div>
+          <div class="form-group">
+            <label for="Amount">Amount</label>
+            <input
+              type="number"
+              step="any"
+              id="Amount"
+              name="Amount"
+              required
+              placeholder="e.g. 149.62"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V1">V1</label>
+            <input
+              type="number"
+              step="any"
+              id="V1"
+              name="V1"
+              required
+              placeholder="e.g. -1.3598"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V2">V2</label>
+            <input
+              type="number"
+              step="any"
+              id="V2"
+              name="V2"
+              required
+              placeholder="e.g. 0.4417"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V3">V3</label>
+            <input
+              type="number"
+              step="any"
+              id="V3"
+              name="V3"
+              required
+              placeholder="e.g. -0.4939"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V4">V4</label>
+            <input
+              type="number"
+              step="any"
+              id="V4"
+              name="V4"
+              required
+              placeholder="e.g. 1.3917"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V5">V5</label>
+            <input
+              type="number"
+              step="any"
+              id="V5"
+              name="V5"
+              required
+              placeholder="e.g. 2.5528"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V6">V6</label>
+            <input
+              type="number"
+              step="any"
+              id="V6"
+              name="V6"
+              required
+              placeholder="e.g. -1.4728"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V7">V7</label>
+            <input
+              type="number"
+              step="any"
+              id="V7"
+              name="V7"
+              required
+              placeholder="e.g. 0.7605"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V8">V8</label>
+            <input
+              type="number"
+              step="any"
+              id="V8"
+              name="V8"
+              required
+              placeholder="e.g. -0.8244"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V9">V9</label>
+            <input
+              type="number"
+              step="any"
+              id="V9"
+              name="V9"
+              required
+              placeholder="e.g. 0.3736"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V10">V10</label>
+            <input
+              type="number"
+              step="any"
+              id="V10"
+              name="V10"
+              required
+              placeholder="e.g. -0.5021"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V11">V11</label>
+            <input
+              type="number"
+              step="any"
+              id="V11"
+              name="V11"
+              required
+              placeholder="e.g. -0.2354"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V12">V12</label>
+            <input
+              type="number"
+              step="any"
+              id="V12"
+              name="V12"
+              required
+              placeholder="e.g. -0.3833"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V13">V13</label>
+            <input
+              type="number"
+              step="any"
+              id="V13"
+              name="V13"
+              required
+              placeholder="e.g. 1.0475"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V14">V14</label>
+            <input
+              type="number"
+              step="any"
+              id="V14"
+              name="V14"
+              required
+              placeholder="e.g. -0.5084"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V15">V15</label>
+            <input
+              type="number"
+              step="any"
+              id="V15"
+              name="V15"
+              required
+              placeholder="e.g. 0.4098"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V16">V16</label>
+            <input
+              type="number"
+              step="any"
+              id="V16"
+              name="V16"
+              required
+              placeholder="e.g. -1.5407"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V17">V17</label>
+            <input
+              type="number"
+              step="any"
+              id="V17"
+              name="V17"
+              required
+              placeholder="e.g. -0.2779"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V18">V18</label>
+            <input
+              type="number"
+              step="any"
+              id="V18"
+              name="V18"
+              required
+              placeholder="e.g. -0.6349"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V19">V19</label>
+            <input
+              type="number"
+              step="any"
+              id="V19"
+              name="V19"
+              required
+              placeholder="e.g. -0.1130"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V20">V20</label>
+            <input
+              type="number"
+              step="any"
+              id="V20"
+              name="V20"
+              required
+              placeholder="e.g. 0.1721"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V21">V21</label>
+            <input
+              type="number"
+              step="any"
+              id="V21"
+              name="V21"
+              required
+              placeholder="e.g. 0.0504"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V22">V22</label>
+            <input
+              type="number"
+              step="any"
+              id="V22"
+              name="V22"
+              required
+              placeholder="e.g. 0.8062"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V23">V23</label>
+            <input
+              type="number"
+              step="any"
+              id="V23"
+              name="V23"
+              required
+              placeholder="e.g. 0.4507"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V24">V24</label>
+            <input
+              type="number"
+              step="any"
+              id="V24"
+              name="V24"
+              required
+              placeholder="e.g. -0.1714"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V25">V25</label>
+            <input
+              type="number"
+              step="any"
+              id="V25"
+              name="V25"
+              required
+              placeholder="e.g. -0.4597"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V26">V26</label>
+            <input
+              type="number"
+              step="any"
+              id="V26"
+              name="V26"
+              required
+              placeholder="e.g. 0.2006"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V27">V27</label>
+            <input
+              type="number"
+              step="any"
+              id="V27"
+              name="V27"
+              required
+              placeholder="e.g. -0.4731"
+            />
+          </div>
+          <div class="form-group">
+            <label for="V28">V28</label>
+            <input
+              type="number"
+              step="any"
+              id="V28"
+              name="V28"
+              required
+              placeholder="e.g. 0.3968"
+            />
+          </div>
+        </div>
+        <button type="submit">Predict</button>
+      </form>
+      <div id="result"></div>
+
+      <hr />
+
+      <h2>Predict from CSV</h2>
+      <form id="prediction-form-csv" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="file">Upload CSV</label>
+          <input type="file" id="file" name="file" accept=".csv" required />
+        </div>
+        <button type="submit">Predict from CSV</button>
+      </form>
+      <div id="result-csv"></div>
+    </div>
+    <!-- Models list removed per request -->
+    <script src="static/script.js"></script>
+  </body>
+</html>

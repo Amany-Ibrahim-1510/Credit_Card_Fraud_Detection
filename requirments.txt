@@ -1,0 +1,19 @@
+catboost==1.2.8; python_version < "3.14"
+graphviz
+imbalanced-learn
+lightgbm
+matplotlib
+matplotlib-inline
+numpy
+pandas
+pillow
+plotly
+scikit-learn
+scipy
+seaborn
+xgboost
+fastapi
+uvicorn
+python-multipart
+PyYAML
+

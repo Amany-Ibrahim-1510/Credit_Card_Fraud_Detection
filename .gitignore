@@ -1,0 +1,20 @@
+*venv
+*.venv
+*.csv
+*.zip
+tcl/
+tcl*/ 
+*.tcl
+*__pycache__
+__pycache__
+catboost_info/
+*catboost_info
+*logging.txt
+/logging.txt
+eval.py
+*eval.py
+Try_KNN/eval_knn.py
+report.docx
+# config.yaml
+# report.pdf
+~$report.docx

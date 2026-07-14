@@ -1,0 +1,66 @@
+random_state: 42
+
+dataset:
+  train_path: 'data/splits/split/train.csv'
+  val_path: 'data/splits/split/val.csv'
+  test_path: 'data/splits/split/test.csv'
+
+preprocessing:
+  is_scaling: True
+  scaler_option: 2
+
+  remove_duplicates: True
+  remove_outlier: False
+
+  sample_option: 2
+  over_strategy: 'smote'
+  k_neighbors: 5
+
+model:
+
+  logistic_regression:
+    params:
+      max_iter: 1000
+      random_state: 42
+
+  random_forest:
+    params:
+      n_estimators: 200
+      max_depth: 10
+      random_state: 42
+
+  voting_classifier:
+    params:
+
+      model1:
+        max_iter: 1000
+        random_state: 42
+
+      model2:
+        n_estimators: 200
+        max_depth: 10
+        random_state: 42
+
+      voting: 'soft'
+
+  xgboost:
+    params:
+      max_depth: 4
+      learning_rate: 0.1
+      n_estimators: 200
+      random_state: 42
+
+  lightgbm:
+    params:
+      max_depth: 4
+      learning_rate: 0.05
+      n_estimators: 300
+      random_state: 42
+
+  catboost:
+    params:
+      depth: 4
+      iterations: 200
+      learning_rate: 0.1
+      random_state: 42
+      verbose: False
