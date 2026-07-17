@@ -1,10 +1,19 @@
 import os
 import sys
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from Modeling.Train.logistic_regression import Train
-from Modeling.Helper.prepare import Preparing
-from Modeling.Helper.save import save_model
+sys.path.append(
+    os.path.abspath(
+        os.path.join(
+            os.path.dirname(__file__),
+            '..'
+        )
+    )
+)
+
+from Helper.prepare import Preparing
+from Helper.save import save_model
+
+from Train.train_catboost import Train
 
 
 if __name__ == "__main__":
@@ -15,11 +24,6 @@ if __name__ == "__main__":
         prepare.prepare_data()
     )
 
-    print(x_train.shape)
-    print(t_train.shape)
-    print(x_val.shape)
-    print(t_val.shape)
-
     train = Train(
         x_train,
         x_val,
@@ -27,12 +31,14 @@ if __name__ == "__main__":
         t_val
     )
 
-    model = train.try_logistic_regression()
+    print("Training Best Model (CatBoost)...")
+
+    model = train.try_catboost()
 
     save_model(
         model,
         scaler,
-        "logistic_regression"
+        "best_model"
     )
 
-    print("Successful")
+    print("\nBest model saved successfully!")
